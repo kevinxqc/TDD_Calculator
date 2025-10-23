@@ -56,4 +56,20 @@ public class CalculatorTest {
                 .isInstanceOf(ArithmeticException.class)
                 .hasMessageContaining("zero");
     }
+
+    @Test
+    @DisplayName("should handle negative numbers in addition")
+    void testAdditionWithNegativeNumbers() {
+        int result = calculator.add(-5, 3);
+        assertThat(result).isEqualTo(-2);
+    }
+
+    @Test
+    @DisplayName("should handle multiplication with zero and negative numbers")
+    void testMultiplicationWithZeroAndNegative() {
+        assertThat(calculator.multiply(0, 5)).isZero();
+        assertThat(calculator.multiply(-3, 4)).isEqualTo(-12);
+    }
+
+
 }
